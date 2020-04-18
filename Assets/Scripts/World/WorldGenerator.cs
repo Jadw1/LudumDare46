@@ -117,7 +117,7 @@ public class WorldGenerator : MonoBehaviour {
                         currentTilemap = _waterTilemap;
                         break;
                 }
-
+                
                 SetTile(currentTilemap, x, y, currentTile);
                 if (map[x, y] != TileType.GRASS) {
                     ComplementNeighbours(currentTilemap, x, y, currentTile);
@@ -127,10 +127,11 @@ public class WorldGenerator : MonoBehaviour {
     }
 
     private void SetTile(Tilemap tilemap, int x, int y, TileBase tile) {
-        tilemap.SetTile(new Vector3Int(x * tileSizeScale, 0, y * tileSizeScale), tile);
-        tilemap.SetTile(new Vector3Int(x * tileSizeScale + 1, 0, y * tileSizeScale), tile);
-        tilemap.SetTile(new Vector3Int(x * tileSizeScale, 0, y * tileSizeScale + 1), tile);
-        tilemap.SetTile(new Vector3Int(x * tileSizeScale + 1, 0, y * tileSizeScale + 1), tile);
+        for (int i = 0; i < tileSizeScale; i++) {
+            for (int j = 0; j < tileSizeScale; j++) {
+                tilemap.SetTile(new Vector3Int(x * tileSizeScale + i, y * tileSizeScale + j, 0), tile);
+            }
+        }
     }
 
     private void ComplementNeighbours(Tilemap tilemap, int x, int y, TileBase tile) {
