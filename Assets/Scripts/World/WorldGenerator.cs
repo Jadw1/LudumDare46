@@ -136,11 +136,11 @@ public class WorldGenerator : MonoBehaviour {
     private void ComplementNeighbours(Tilemap tilemap, int x, int y, TileBase tile) {
         TileType currentTile = map[x, y];
         
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                if (i != 0 || j != 0) {
-                    if (DoComplement(currentTile, map[x+i, y+j])) {
-                        SetTile(tilemap, x + i, y + j, tile);
+        for (int i = x - 1; i <= x + 1; i++) {
+            for (int j = y - 1; j <= y + 1; j++) {
+                if ((i != x || j != y) && (i >= 0 && i < width && j >= 0 && j < height)) {
+                    if (DoComplement(currentTile, map[i, j])) {
+                        SetTile(tilemap, i, j, tile);
                     }
                 }
             }
