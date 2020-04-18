@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-// BillboardSprite.cs
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
 
 public class Billboard: MonoBehaviour {
 
